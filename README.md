@@ -10,13 +10,15 @@ After you enable GitHub Pages for this repository, the game is published automat
 
 1. Push these changes to GitHub (remote `origin` on the `main` branch).
 2. In the repo on GitHub: **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. Open the **Actions** tab and confirm the **Deploy to GitHub Pages** workflow succeeds.
-5. Your site URL will be:
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**. Ignore the **Configure** buttons for “Static HTML” or “Jekyll” — this repo already includes **`.github/workflows/pages.yml`**.
+4. Confirm that file exists on GitHub under **Code** → `.github/workflows/pages.yml`. If it is missing, push your local `main` branch (see below).
+5. Open the **Actions** tab, select **Deploy to GitHub Pages**, and either wait for the latest run or use **Run workflow** (manual runs are enabled).
+6. The first run may ask you to **approve** the `github-pages` environment (GitHub will show a prompt in the workflow run).
+7. When the run is green, the site is live at:
 
    `https://<your-username>.github.io/minesweeper/`
 
-Replace `<your-username>` with your GitHub username or organization name.
+   Replace `<your-username>` with your GitHub username or organization name (for **pat749** / repo **minesweeper**, that is `https://pat749.github.io/minesweeper/`).
 
 ## Prerequisites
 
