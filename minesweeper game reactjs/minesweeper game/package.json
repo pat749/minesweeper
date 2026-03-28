@@ -5,7 +5,9 @@
   "main": "application.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development"
+    "prestart": "node copy-static.js",
+    "start": "webpack --watch --mode=development",
+    "build": "webpack --mode=production && node copy-static.js"
   },
   "keywords": [],
   "author": "",

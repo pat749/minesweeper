@@ -1,22 +1,69 @@
-# minesweeper
-Welcome to Minesweeper! This classic game is a test of strategy and memory, where players must uncover tiles on a grid while avoiding hidden mines.
+# Minesweeper
 
-Game Controls:
+A browser-based Minesweeper built with React and webpack. Clear the field using numeric clues, flag suspected mines, and avoid detonations.
 
-Use arrow keys to navigate the grid.
-Press Enter or Space to uncover a tile.
-Press "F" to flag a tile suspected to be a mine.
-Objective: Uncover all non-mine tiles without triggering any mines.
+![Preview banner](docs/preview.svg)
 
-Rules:
+## Play online (GitHub Pages)
 
-Each tile may contain a mine or a number indicating the adjacent mines.
-Use the numbers as clues to determine where the mines are located.
-Be cautious! Triggering a mine ends the game.
+After you enable GitHub Pages for this repository, the game is published automatically on every push to `main`.
 
-# Features
-Customizable grid size and mine density.
-Clear and intuitive user interface.
-Beginner-friendly gameplay.
-Challenge mode for experienced players.
+1. Push these changes to GitHub (remote `origin` on the `main` branch).
+2. In the repo on GitHub: **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Open the **Actions** tab and confirm the **Deploy to GitHub Pages** workflow succeeds.
+5. Your site URL will be:
 
+   `https://<your-username>.github.io/minesweeper/`
+
+Replace `<your-username>` with your GitHub username or organization name.
+
+## Run locally
+
+```bash
+cd "minesweeper game reactjs/minesweeper game"
+npm install
+npm run build
+```
+
+Open `dist/index.html` in a browser (or serve the `dist` folder with any static file server).
+
+For development with rebuild on save:
+
+```bash
+npm start
+```
+
+Then refresh the browser after webpack writes `dist/bundle.js` (or point a server at the project root and load `index.html` if you adjust paths).
+
+## Controls
+
+| Action | Input |
+|--------|--------|
+| Reveal a tile | Left-click |
+| Flag / unflag | Right-click, or Alt + left-click |
+| Chord (reveal neighbors) | Left-click a **revealed** number when the number of adjacent flags matches that number |
+| New game | Smiley button or **Play again** after win/loss |
+
+## Features
+
+- **Difficulties**: Beginner (9×9, 10 mines), Intermediate (16×16, 40), Expert (22×22, 99).
+- **First click safe**: Mines are placed after your first reveal, with a clear zone around that tile.
+- **Timer** and **mine counter** (mines minus flags).
+- **Chord** on numbers when flags match the clue (wrong flags can still detonate a mine).
+- **Win / loss** modal with time and difficulty; on loss, all mines are shown.
+- **Visuals**: Dark theme, colored clues (1–8), gradient tiles, LCD-style readouts.
+
+## Project layout
+
+- `minesweeper game reactjs/minesweeper game/` — React app, webpack config, and production build output in `dist/`.
+- `.github/workflows/pages.yml` — Builds with Node 20 and deploys `dist` to GitHub Pages.
+- `docs/preview.svg` — Vector preview graphic for the README.
+
+## Rules (quick reference)
+
+- Numbers show how many mines touch that cell (including diagonals).
+- You win when every **non-mine** cell is revealed.
+- You lose if you reveal a mine.
+
+Enjoy, and good luck clearing the field.

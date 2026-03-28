@@ -1,11 +1,15 @@
 const path = require('path');
 
+const isProd =
+  process.env.NODE_ENV === 'production' || process.argv.includes('--mode=production');
+
 module.exports = {
   context: __dirname,
   entry: './react_minesweeper.jsx',
   output: {
-    path: path.resolve(__dirname),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: './',
   },
   module: {
     rules: [
@@ -15,16 +19,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react']
-          }
+            presets: ['@babel/env', '@babel/react'],
+          },
         },
-      }
-    ]
+      },
+    ],
   },
-  devtool: 'source-map',
+  devtool: isProd ? false : 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
-  }
+    extensions: ['.js', '.jsx', '*'],
+  },
 };
-
-
