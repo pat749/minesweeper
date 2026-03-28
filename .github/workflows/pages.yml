@@ -29,7 +29,7 @@ jobs:
       - name: Install and build
         working-directory: minesweeper game reactjs/minesweeper game
         run: |
-          npm ci --omit=optional
+          npm ci
           npm run build
 
       - uses: actions/upload-pages-artifact@v3
