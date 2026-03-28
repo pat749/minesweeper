@@ -18,15 +18,37 @@ After you enable GitHub Pages for this repository, the game is published automat
 
 Replace `<your-username>` with your GitHub username or organization name.
 
+## Prerequisites
+
+You need **Node.js** (includes `npm`). If `zsh: command not found: npm`, install Node and ensure your shell can see it.
+
+**macOS (Homebrew):**
+
+```bash
+brew install node
+```
+
+If `brew` itself is not found, install Homebrew from [brew.sh](https://brew.sh), then add it to your PATH (Apple Silicon often needs this once):
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Open a **new** terminal tab, then run `node -v` and `npm -v` to confirm.
+
+This project uses webpack 4; the npm scripts set `NODE_OPTIONS=--openssl-legacy-provider` so the build works on current Node (OpenSSL 3).
+
 ## Run locally
 
 ```bash
 cd "minesweeper game reactjs/minesweeper game"
 npm install
 npm run build
+open dist/index.html
 ```
 
-Open `dist/index.html` in a browser (or serve the `dist` folder with any static file server).
+On macOS, `open dist/index.html` launches the built game in your default browser. On other systems, open `dist/index.html` manually or serve the `dist` folder with any static file server.
 
 For development with rebuild on save:
 
@@ -34,7 +56,7 @@ For development with rebuild on save:
 npm start
 ```
 
-Then refresh the browser after webpack writes `dist/bundle.js` (or point a server at the project root and load `index.html` if you adjust paths).
+Then refresh the browser after webpack writes `dist/bundle.js`. Use **`dist/index.html`** as the page you open (the `prestart` script copies HTML/CSS into `dist/` first).
 
 ## Controls
 

@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "node copy-static.js",
-    "start": "webpack --watch --mode=development",
-    "build": "webpack --mode=production && node copy-static.js"
+    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch --mode=development",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production && node copy-static.js"
   },
   "keywords": [],
   "author": "",
